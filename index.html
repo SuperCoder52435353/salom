@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buxgalteriya Pro - Abduraxmon</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-100 font-sans">
+    <div class="container mx-auto p-6">
+        <header class="bg-blue-600 text-white p-4 rounded-lg shadow-lg mb-6">
+            <h1 class="text-3xl font-bold text-center">Buxgalteriya Pro</h1>
+            <p class="text-center">Professional Hisob-Kitoblar</p>
+        </header>
+
+        <main>
+            <!-- Operatsiya formasi -->
+            <section class="bg-white p-6 rounded-lg shadow-md mb-6">
+                <h2 class="text-xl font-semibold mb-4">Yangi Operatsiya</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div>
+                        <label for="operationType" class="block font-medium">Operatsiya turi</label>
+                        <select id="operationType" class="w-full p-2 border rounded">
+                            <option value="debet">Debet</option>
+                            <option value="kredit">Kredit</option>
+                            <option value="aktiv">Aktiv</option>
+                            <option value="passiv">Passiv</option>
+                            <option value="dekret">Dekret</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="amount" class="block font-medium">Summa</label>
+                        <input type="number" id="amount" class="w-full p-2 border rounded" placeholder="Summani kiriting">
+                    </div>
+                    <div>
+                        <label for="description" class="block font-medium">Tavsif</label>
+                        <input type="text" id="description" class="w-full p-2 border rounded" placeholder="Tavsif kiriting">
+                    </div>
+                </div>
+                <button onclick="addTransaction()" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Qo'shish</button>
+            </section>
+
+            <!-- Kalkulyator -->
+            <section class="bg-white p-6 rounded-lg shadow-md mb-6">
+                <h2 class="text-xl font-semibold mb-4">Kalkulyator</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div>
+                        <label for="foiz" class="block font-medium">Foiz (%)</label>
+                        <input type="number" id="foiz" class="w-full p-2 border rounded" placeholder="Foiz kirit">
+                    </div>
+                    <div>
+                        <label for="foizAmount" class="block font-medium">Summa</label>
+                        <input type="number" id="foizAmount" class="w-full p-2 border rounded" placeholder="Summa">
+                    </div>
+                    <div>
+                        <label for="dekretMonths" class="block font-medium">Dekret oylari</label>
+                        <input type="number" id="dekretMonths" class="w-full p-2 border rounded" placeholder="Oylar soni">
+                    </div>
+                </div>
+                <button onclick="calculateAll()" class="mt-4 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition">Hisoblash</button>
+                <p class="mt-2">Foiz natijasi: <span id="foizResult">0</span></p>
+                <p>Dekret to'lovi: <span id="dekretResult">0</span></p>
+            </section>
+
+            <!-- Hisobot -->
+            <section class="bg-white p-6 rounded-lg shadow-md">
+                <h2 class="text-xl font-semibold mb-4">Hisobotlar</h2>
+                <table class="w-full border-collapse">
+                    <thead>
+                        <tr class="bg-gray-200">
+                            <th class="border p-2">Turi</th>
+                            <th class="border p-2">Summa</th>
+                            <th class="border p-2">Tavsif</th>
+                            <th class="border p-2">Sana</th>
+                        </tr>
+                    </thead>
+                    <tbody id="reportBody"></tbody>
+                </table>
+                <div class="mt-4">
+                    <p>Debet: <span id="totalDebet">0</span></p>
+                    <p>Kredit: <span id="totalKredit">0</span></p>
+                    <p>Aktiv: <span id="totalAktiv">0</span></p>
+                    <p>Passiv: <span id="totalPassiv">0</span></p>
+                    <p>Aylik daromad: <span id="monthlyIncome">0</span></p>
+                    <p>Balans: <span id="balance">0</span></p>
+                </div>
+            </section>
+        </main>
+
+        <footer class="mt-6 text-center text-gray-600">
+            <p>Made by Abduraxmon</p>
+        </footer>
+    </div>
+
+    <script src="database.js"></script>
+    <script src="utils.js"></script>
+    <script src="calculator.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

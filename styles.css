@@ -1,0 +1,29 @@
+/* Qo'shimcha CSS stillari */
+body {
+    transition: all 0.3s ease;
+}
+
+button {
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+table tr {
+    transition: background-color 0.2s ease;
+}
+
+table tr:hover {
+    background-color: #f1f5f9;
+}
+
+input, select {
+    transition: border-color 0.3s ease;
+}
+
+input:focus, select:focus {
+    border-color: #2563eb;
+    outline: none;
+}
